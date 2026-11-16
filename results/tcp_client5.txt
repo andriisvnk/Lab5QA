@@ -1,0 +1,37 @@
+------------------------------------------------------------
+Client connecting to 10.0.0.1, TCP port 5001
+TCP window size: 16.0 KByte (default)
+------------------------------------------------------------
+[  1] local 10.0.0.2 port 59398 connected with 10.0.0.1 port 5001 (icwnd/mss/irtt=14/1448/32)
+[ ID] Interval       Transfer     Bandwidth
+[  1] 0.0000-1.0000 sec  3684 MBytes  30907 Mbits/sec
+[  1] 1.0000-2.0000 sec  3645 MBytes  30576 Mbits/sec
+[  1] 2.0000-3.0000 sec  3544 MBytes  29732 Mbits/sec
+[  1] 3.0000-4.0000 sec  3768 MBytes  31606 Mbits/sec
+[  1] 4.0000-5.0000 sec  3918 MBytes  32863 Mbits/sec
+[  1] 5.0000-6.0000 sec  3902 MBytes  32737 Mbits/sec
+[  1] 6.0000-7.0000 sec  3686 MBytes  30918 Mbits/sec
+[  1] 7.0000-8.0000 sec  3599 MBytes  30190 Mbits/sec
+[  1] 8.0000-9.0000 sec  3932 MBytes  32987 Mbits/sec
+[  1] 9.0000-10.0000 sec  3577 MBytes  30006 Mbits/sec
+[  1] 10.0000-11.0000 sec  3603 MBytes  30221 Mbits/sec
+[  1] 11.0000-12.0000 sec  3589 MBytes  30110 Mbits/sec
+[  1] 12.0000-13.0000 sec  3518 MBytes  29507 Mbits/sec
+[  1] 13.0000-14.0000 sec  3583 MBytes  30058 Mbits/sec
+[  1] 14.0000-15.0000 sec  3447 MBytes  28919 Mbits/sec
+[  1] 15.0000-16.0000 sec  3622 MBytes  30382 Mbits/sec
+[  1] 16.0000-17.0000 sec  3547 MBytes  29758 Mbits/sec
+[  1] 17.0000-18.0000 sec  3546 MBytes  29750 Mbits/sec
+[  1] 18.0000-19.0000 sec  3586 MBytes  30086 Mbits/sec
+[  1] 19.0000-20.0000 sec  3344 MBytes  28049 Mbits/sec
+[  1] 20.0000-21.0000 sec  3830 MBytes  32132 Mbits/sec
+[  1] 21.0000-22.0000 sec  3865 MBytes  32423 Mbits/sec
+[  1] 22.0000-23.0000 sec  3899 MBytes  32708 Mbits/sec
+[  1] 23.0000-24.0000 sec  3847 MBytes  32273 Mbits/sec
+[  1] 24.0000-25.0000 sec  3630 MBytes  30451 Mbits/sec
+[  1] 25.0000-26.0000 sec  3596 MBytes  30164 Mbits/sec
+[  1] 26.0000-27.0000 sec  3514 MBytes  29479 Mbits/sec
+[  1] 27.0000-28.0000 sec  3908 MBytes  32787 Mbits/sec
+[  1] 28.0000-29.0000 sec  3913 MBytes  32826 Mbits/sec
+[  1] 29.0000-30.0000 sec  3880 MBytes  32551 Mbits/sec
+[  1] 0.0000-30.0092 sec  110526 MBytes  30896 Mbits/sec

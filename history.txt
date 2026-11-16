@@ -1,0 +1,47 @@
+mkdir -p C:\Users\User/Documents/Lab5QA-new/captures
+cd C:\Users\User/Documents/Lab5QA-new
+sudo -v
+mkdir -p /home/andriisvnk/Documents/Lab5QA-new/captures
+cd /home/andriisvnk/Documents/Lab5QA-new
+sudo ip netns add server5
+sudo ip netns add client5
+sudo ip link add srv5 type veth peer name cli5
+sudo ip link set srv5 netns server5
+sudo ip link set cli5 netns client5
+sudo ip -n server5 address add 10.0.0.1/24 dev srv5
+sudo ip -n client5 address add 10.0.0.2/24 dev cli5
+sudo ip -n server5 link set lo up
+sudo ip -n client5 link set lo up
+sudo ip -n server5 link set srv5 up
+sudo ip -n client5 link set cli5 up
+sudo ip netns exec client5 ping -c 3 10.0.0.1
+sudo ip netns exec server5 iperf -s -i 1 -f m > tcp-server.txt 2>&1 &
+sudo ip netns exec server5 dumpcap -i srv5 -f "tcp port 5001" -w - 2> capture-tcp-server.txt | gzip -1 > captures/tcp-server.pcapng.gz &
+sudo ip netns exec client5 dumpcap -i cli5 -f "tcp port 5001" -w - 2> capture-tcp-client.txt | gzip -1 > captures/tcp-client.pcapng.gz &
+sudo ip netns exec client5 iperf -c 10.0.0.1 -i 1 -t 10 -f m | tee tcp-basic.txt
+sudo pkill -INT -x dumpcap
+sudo ip netns exec server5 iperf -s -u -i 1 -f m > udp-server.txt 2>&1 &
+sudo ip netns exec server5 dumpcap -i srv5 -f "udp port 5001" -w - 2> capture-udp-server.txt | gzip -1 > captures/udp-server.pcapng.gz &
+sudo ip netns exec client5 dumpcap -i cli5 -f "udp port 5001" -w - 2> capture-udp-client.txt | gzip -1 > captures/udp-client.pcapng.gz &
+sudo ip netns exec client5 iperf -c 10.0.0.1 -u -i 1 -t 10 -f m | tee udp-basic.txt
+sudo pkill -INT -x dumpcap
+cp /home/andriisvnk/Documents/Lab5QA/bashTCP .
+cat bashTCP
+chmod +x bashTCP
+sudo ip netns exec client5 ./bashTCP 10.0.0.1 client5
+vmstat -t 5 > resources.txt &
+date -Is
+sudo ip netns exec client5 iperf -c 10.0.0.1 -i 1 -t 500 -b 70G -l 65000 -u -f m | tee udp-large.txt
+date -Is
+sudo ip netns exec client5 iperf -c 10.0.0.1 -i 1 -t 360 -b 3G -l 1000 -u -f m | tee udp-small.txt
+kill 3444
+history -w /home/andriisvnk/.bash_history
+sudo ip netns exec client5 ping -c 5 10.0.0.1 | tee responsiveness-large.txt
+cp /home/andriisvnk/Documents/Lab5QA/plotTCP.gpi .
+chmod +x plotTCP.gpi
+./plotTCP.gpi
+wireshark -r captures/tcp-server.pcapng.gz -Y "tcp.flags.syn eq 1 or frame.number eq 3" > wireshark-tcp.log 2>&1 &
+wireshark -r captures/udp-server.pcapng.gz -Y udp > wireshark-udp.log 2>&1 &
+sudo ip netns exec client5 ping -c 5 10.0.0.1 | tee responsiveness-small.txt
+date -Is
+history -a /home/andriisvnk/.bash_history

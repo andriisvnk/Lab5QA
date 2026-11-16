@@ -1,0 +1,4 @@
+Capturing on 'cli5'
+File: -
+Packets: 18 Packets: 40 Packets: 62 Packets: 84 Packets: 107 Packets: 129 Packets: 151 Packets: 173 Packets: 196 Packets: 218 Packets: 240 Packets: 263 Packets: 285 Packets: 307 Packets: 330 Packets: 352 Packets: 374 Packets: 399 Packets: 419 Packets: 441 Packets: 463 Packets: 486 Packets: 508 Packets: 530 Packets: 552 Packets: 574 Packets: 597 Packets: 619 Packets: 642 Packets: 664 Packets: 685 Packets: 708 Packets: 732 Packets: 754 Packets: 775 Packets: 798 Packets: 820 Packets: 842 Packets: 865 Packets: 887 Packets: 895 Packets captured: 895
+Packets received/dropped on interface 'cli5': 895/0 (pcap:0/dumpcap:0/flushed:0/ps_ifdrop:0) (100.0%)

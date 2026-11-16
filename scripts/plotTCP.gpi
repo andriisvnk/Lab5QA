@@ -1,0 +1,10 @@
+#!/usr/bin/gnuplot
+set terminal pngcairo size 1400,800 enhanced font 'DejaVu Sans,18'
+set output 'tcp-throughput.png'
+set xlabel 'Time, s'
+set ylabel 'Throughput, Mbit/s'
+set title 'TCP throughput: 30-second test'
+set xrange [0:30]
+set grid
+set key bottom right
+plot "< awk '$4==\"sec\" {split($3,t,\"-\"); if(t[2]-t[1] > 0.99 && t[2]-t[1] < 1.01) print t[2],$7}' tcp_client5.txt" using 1:2 with linespoints linewidth 2 pointtype 7 title 'client5 -> server5'
